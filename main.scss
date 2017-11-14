@@ -1,0 +1,48 @@
+// compileExpanded, expandedFilenamePattern: style.css
+$lgtcolor: #ececed;
+$drkcolor: #494e54;
+$pricolor: #175b7c;
+$seccolor: #5e8c9c;
+$font: 'Jura';
+$fontsize: 17px;
+body {
+  background-color: $lgtcolor;
+  font: {
+    family: $font;
+    size: $fontsize;
+  }
+
+}
+h3 {
+  color: $drkcolor;
+  text-align: center;
+}
+ul {
+  padding: {
+    top: 17px;
+    bottom: 17px;
+  }
+  border: {
+    style: solid;
+    radius: 3px;
+    width: 1px;
+    color: $drkcolor;
+  }
+  background-color: white;
+  li {
+    padding: 3px;
+    margin-left: 28px;
+    color: black;
+    &:nth-child(3n+3) {
+      color: red;
+    }
+  }
+}
+.form-control {
+  border-color: $drkcolor;
+  font-size: $fontsize;
+}
+.btn-primary {
+  background-color: $pricolor;
+  font-size: $fontsize;
+}

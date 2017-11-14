@@ -1,0 +1,40 @@
+body {
+  background-color: #ececed;
+  font-family: "Jura";
+  font-size: 17px;
+}
+
+h3 {
+  color: #494e54;
+  text-align: center;
+}
+
+ul {
+  padding-top: 17px;
+  padding-bottom: 17px;
+  border-style: solid;
+  border-radius: 3px;
+  border-width: 1px;
+  border-color: #494e54;
+  background-color: white;
+}
+
+ul li {
+  padding: 3px;
+  margin-left: 28px;
+  color: black;
+}
+
+ul li:nth-child(3n+3) {
+  color: red;
+}
+
+.form-control {
+  border-color: #494e54;
+  font-size: 17px;
+}
+
+.btn-primary {
+  background-color: #175b7c;
+  font-size: 17px;
+}
