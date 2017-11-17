@@ -1,7 +1,27 @@
-var app = angular.module('listInsertion', []);
+var app = angular.module('listInsertion', ['ui.router']);
+
+app.config([
+'$stateProvider',
+'$urlRouterProvider',
+function($stateProvider, $urlRouterProvider) {
+
+  $stateProvider
+    .state('home', {
+      url: '/home',
+      templateUrl: '/home.html',
+      controller: 'MainController',
+      resolve: {
+    postPromise: ['lists', function(lists){
+      return lists.getAll();
+    }]
+  }
+    });
+
+  $urlRouterProvider.otherwise('home');
+}]);
 
 
-app.factory('lists', [function() {
+app.factory('lists', ['$http', function($http) {
   var o = {
     lists: []
   };
@@ -11,6 +31,12 @@ app.factory('lists', [function() {
      angular.copy(data, o.lists);
    });
  };
+
+ o.create = function(list) {
+  return $http.post('/lists', list).success(function(data){
+    o.lists.push(data);
+  });
+};
 
   return o;
 }])
@@ -24,7 +50,7 @@ app.controller('MainController', [
       if (!$scope.content || $scope.content === '') { //don't allow empty lists
         return;
       };
-      $scope.lists.push({
+      lists.create({
         content: $scope.content //add to lists
       });
       $scope.content = ''; //clear input field
