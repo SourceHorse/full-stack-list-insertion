@@ -5,9 +5,9 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
-require('./models/Lists');
+require('./models/Lists'); //mongoose model for list
 
-mongoose.connect('mongodb://localhost/news');
+mongoose.connect('mongodb://localhost/listinsertion');
 
 var index = require('./routes/index');
 var users = require('./routes/users');

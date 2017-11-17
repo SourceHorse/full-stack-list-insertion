@@ -21,18 +21,18 @@ function($stateProvider, $urlRouterProvider) {
 }]);
 
 
-app.factory('lists', ['$http', function($http) {
+app.factory('lists', ['$http', function($http) { 
   var o = {
     lists: []
   };
 
-  o.getAll = function() {
+  o.getAll = function() { //loads all list items
    return $http.get('/lists').success(function(data){
      angular.copy(data, o.lists);
    });
  };
 
- o.create = function(list) {
+ o.create = function(list) { //push new list item
   return $http.post('/lists', list).success(function(data){
     o.lists.push(data);
   });
@@ -46,7 +46,7 @@ app.controller('MainController', [
   'lists',
   function($scope, lists) {
     $scope.lists = lists.lists;
-    $scope.addList = function() {
+    $scope.addList = function() { //addList function
       if (!$scope.content || $scope.content === '') { //don't allow empty lists
         return;
       };
